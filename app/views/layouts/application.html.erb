@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SwiftKart</title>
-    <%= render 'layouts/rails_default'%>
-    <%= render 'layouts/shim'%>
+    <title><%= full_title(yield(:title)) %></title>
+	<%= render 'layouts/rails_default'%>
+	<%= render 'layouts/shim'%>
   </head>
 
   <body>
