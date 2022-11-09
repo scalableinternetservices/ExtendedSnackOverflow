@@ -5,8 +5,6 @@
 
 <h1>Your Cart</h1>
 
-<%= javascript_pack_tag 'cart'%>
-
 <% item_ids = [] %>
 <%= form_with url: "/orderplaced", method: :post do |f| %>
   <% @carts.each do |cart| %>
