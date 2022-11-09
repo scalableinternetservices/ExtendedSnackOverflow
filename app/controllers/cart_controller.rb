@@ -1,5 +1,6 @@
 class CartController < ApplicationController
-  def showcart
+	before_action :authenticate_buyer!
+	def showcart
 		items = Cart.order(:id)
 		@carts = items
 		
