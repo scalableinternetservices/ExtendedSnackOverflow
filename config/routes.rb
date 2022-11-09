@@ -11,5 +11,6 @@ Rails.application.routes.draw do
 
   get '/showcart', to: 'cart#showcart'
   post '/orderplaced', to: 'cart#placeorder'
+  post '/cart/:id', to: 'cart#additem'
   
 end
