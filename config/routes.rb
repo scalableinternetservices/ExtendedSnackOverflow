@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/ratings/:order_id', to: 'ratings#new', as: 'new_rating'
   get '/items/new', to: 'items#new'
   post '/items', to: 'items#create'
+  get '/items/:id', to: 'items#show'
   post '/ratings/:order_id', to: 'ratings#create'
 
   get '/showcart', to: 'cart#showcart'
