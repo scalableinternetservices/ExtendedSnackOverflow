@@ -10,11 +10,16 @@ Rails.application.routes.draw do
   get '/items/new', to: 'items#new'
   post '/items', to: 'items#create'
   post '/ratings/:order_id', to: 'ratings#create'
+  
+  #Cart controller
   get '/showcart', to: 'cart#showcart'
+  get '/showcart/:id', to: 'cart#showcart'
   post '/orderplaced', to: 'cart#placeorder'
+  
   # route to get item id info
   get '/items/:id', to: 'items#show'
   post '/cart/:id', to: 'cart#additem'
+  delete '/cart/:id', to: 'cart#deleteitem'
   get '/profile/buyer', to: 'profiles#buyer'
   get '/profile/seller', to: 'profiles#seller'  
 
