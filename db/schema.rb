@@ -10,19 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_13_015631) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_13_062243) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "addresses", force: :cascade do |t|
-    t.string "street_address"
-    t.string "city"
-    t.string "state"
-    t.string "zipcode"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "buyer_id"
-  end
 
   create_table "buyers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -40,6 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_015631) do
     t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "buyer_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -48,6 +39,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_015631) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "seller_id"
+    t.string "integer"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -56,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_015631) do
     t.datetime "updated_at", null: false
     t.integer "rating_id"
     t.integer "item_id"
+    t.integer "buyer_id"
   end
 
   create_table "ratings", force: :cascade do |t|

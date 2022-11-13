@@ -1,7 +1,11 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
 <div class="container">
-	<%= link_to "Swift Kart", '/', id: "logo" %>
 	<nav>
+	<ul class="nav navbar-nav navbar-left">
+		<li><%= image_tag("swiftkart_logo.jpeg", class: "img-responsive", id: "navbar-logo") %></li> 
+		<li><%= link_to "SwiftKart", '/', id: "logo" %></li>
+	</ul>
+	
 	<ul class="nav navbar-nav navbar-right">
 		<% if buyer_signed_in? %>
 			<li><%= link_to "Your Orders", orders_path %></li>
@@ -13,7 +17,7 @@
 			<li><%= link_to "Profile", "/profile/buyer" %></li>
 			<li><%= link_to "Sign Out", destroy_buyer_session_path, method: :delete %></li>
 		<% elsif seller_signed_in? %>
-			<li><%= link_to "Add New Item", "items/new" %></li>
+			<li><%= link_to "Add New Item", "/items/new" %></li>
 			<li><%= link_to "Profile", "/profile/seller" %></li>
 			<li><%= link_to "Sign Out", destroy_seller_session_path, method: :delete %></li>
 		<% else %>
