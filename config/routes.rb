@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   
   #Cart controller
   get '/showcart', to: 'cart#showcart'
-  get '/showcart/:id', to: 'cart#showcart'
   post '/orderplaced', to: 'cart#placeorder'
   
   # route to get item id info
