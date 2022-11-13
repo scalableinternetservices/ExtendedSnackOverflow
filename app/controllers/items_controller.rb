@@ -1,13 +1,13 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_seller!, only: [:new, :create]
+	before_action :authenticate_seller!, only: [:new, :create]
 
-  def new
-    @item = Item.new
-  end
-  
-  def show
-    @item = Item.find(params[:id])
-    @orders = @item.orders
+	def new
+		@item = Item.new
+	end
+
+	def show
+		@item = Item.find(params[:id])
+		@orders = @item.orders
 		@ratings = []
 		@stars = []
 		@orders.each do |order|
@@ -16,23 +16,30 @@ class ItemsController < ApplicationController
 				@stars << order.rating.stars
 			end
 		end
-		@overall_rating = @stars.sum / @stars.count
-    @overall_rating = @overall_rating.round(1) # Rounding it to 1 decimal point
-  end
-  
-  def create
-    @item = Item.new(item_params)
 
-    if @item.save
-      redirect_to root_path, notice: "You Have Successfully posted an Item!"
-    else
-      redirect_to root_path, notice: "Something went wrong. Try again. Item not posted!"
-    end
-  end
+		# if more than one stars awarded, calculate avg
+		# else give a default 0 rating
+		if @stars.count > 0 
+			@overall_rating = @stars.sum / @stars.count
+		else
+			@overall_rating = 0
+		end
+		
+		@overall_rating = @overall_rating.round(1) # Rounding it to 1 decimal point
+	end
 
-  private
-  def item_params
-    params.require(:item).permit(:name, :description, :price)
-  end
+	def create
+		@item = Item.new(item_params)
+
+		if @item.save
+			redirect_to root_path, notice: "You Have Successfully posted an Item!"
+		else
+			redirect_to root_path, notice: "Something went wrong. Try again. Item not posted!"
+		end
+	end
+	private
+		def item_params
+			params.require(:item).permit(:name, :description, :price)
+		end
 
 end
