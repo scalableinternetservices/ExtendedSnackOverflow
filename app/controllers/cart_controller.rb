@@ -5,7 +5,7 @@ class CartController < ApplicationController
   
 		  items = Cart.where(buyer_id: current_buyer.id).order(:id)
 		  @carts = items
-  
+		  
 		  price = 0;
 		  items.each do |cart|
 			price += cart.item.price
