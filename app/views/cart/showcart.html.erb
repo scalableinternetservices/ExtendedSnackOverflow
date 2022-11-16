@@ -5,10 +5,11 @@
 
 <h1>Your Cart</h1>
 
-<%= javascript_include_tag "cart", "data-turbolinks-track" => true %>
+<%= javascript_pack_tag 'cart'%>
 
 <% item_ids = [] %>
 <%= form_with url: "/orderplaced", method: :post do |f| %>
+  <%= will_paginate @carts %>
   <% @carts.each do |cart| %>
     <% item_ids << cart.item.id %>
     <div class="jumbotron" id ="item_<%= cart.item.id %>">
@@ -18,17 +19,18 @@
       <p id= <%= "cost_#{cart.item.id}"%>><b>Cost: $</b><%= cart.item.price %></p>
       <p><b>Quantity:</b></p>
       <%= select_tag "quantity", options_for_select(1..10),
-              class: "quantity", id: "quantity_#{cart.item.id}",
-                  onchange: "changeQuantity(this);"%>
+                     class: "quantity", id: "quantity_#{cart.item.id}",
+                     onchange: "changeQuantity(this);"%>
       <br/>
-      <%= link_to "/cart/#{cart.item.id}", class: "btn btn-default btn-number", 
-              id: "delete_#{cart.item.id}", method: :delete, :onclick => 'notcalled(event, this);' do %>
-            <span class="glyphicon glyphicon-remove"></span> Delete
+      <%= link_to "/cart/#{cart.item.id}", class: "btn btn-default btn-number",
+                  id: "delete_#{cart.item.id}", method: :delete, :onclick => 'notcalled(event, this);' do %>
+        <span class="glyphicon glyphicon-remove"></span> Delete
       <% end %>
     </div>
     <br>
   <% end %>
-  
+  <%= will_paginate @carts %>
+
 
   <% if false %>
     <div class="address" id="address_div">
@@ -36,25 +38,25 @@
       <% if !@addresses.empty? %>
         <% @addresses.each do |address| %>
           <div>
-          <%= f.radio_button :address, "#{address.id}", :checked => true%>
-          <%= f.label :address, address.street_address+", "+address.city+", "+
+            <%= f.radio_button :address, "#{address.id}", :checked => true%>
+            <%= f.label :address, address.street_address+", "+address.city+", "+
               address.state+" "+address.zipcode %>
           </div>
         <% end %>
       <% end %>
       <% if @addresses.empty? %>
-          <div>Please add a delivery address and proceed</div>
+        <div>Please add a delivery address and proceed</div>
       <% end %>
     </div>
   <% end %>
-  
+
 
   <% ids = item_ids.join(',') %>
   <%= hidden_field_tag "requestparam"%>
   <div class='cart_total_price'>
     <h4 id="totalCost"><b>Total Cost: $<%= @totalcost%></b></h4>
-      <%= button_to "Place Order", { action: "placeorder" }, id: "place_order",
-            class: "btn btn-dark cart_order_button", :disabled => @carts.empty?,
-                :onclick => "placeOrder('"+ids+"')"%>
+    <%= button_to "Place Order", { action: "placeorder" }, id: "place_order",
+                  class: "btn btn-dark cart_order_button", :disabled => @carts.empty?,
+                  :onclick => "placeOrder('"+ids+"')"%>
   </div>
 <% end %>
