@@ -1,6 +1,7 @@
 class CartController < ApplicationController
 	before_action :authenticate_buyer!
-  
+	skip_before_action :verify_authenticity_token, only: [:additem]
+	
 	def showcart
   
 		  items = Cart.where(buyer_id: current_buyer.id).order(:id)
