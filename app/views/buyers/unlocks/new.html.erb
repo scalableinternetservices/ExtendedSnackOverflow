@@ -1,7 +1,7 @@
 <% if notice %><div class="alert alert-info" id="notice"><%= notice %></div><% end %>
 <% if alert %><div class="alert alert-warning" id="alert"><%= alert %></div><% end %>
 
-<h2>Resend unlock instructions</h2>
+<h2>Resend unblock instructions</h2>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "buyers/shared/error_messages", resource: resource %>
@@ -12,7 +12,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
+    <%= f.submit "Resend unblock instructions" %>
   </div>
 <% end %>
 

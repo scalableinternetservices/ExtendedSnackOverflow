@@ -3,8 +3,8 @@
 
 <p>Hello <%= @resource.email %>!</p>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+<p>We have temporarily blocked your account due to an excessive number of unsuccessful sign in attempts.</p>
 
-<p>Click the link below to unlock your account:</p>
+<p>Please click the below link to unblock your account:</p>
 
-<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+<p><%= link_to 'Unblock my account', unlock_url(@resource, unlock_token: @token) %></p>

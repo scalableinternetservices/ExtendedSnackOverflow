@@ -1,9 +1,9 @@
-<% provide(:title, "Your Cart") %>
+<% provide(:title, "Shopping Cart") %>
 
 <% if notice %><div class="alert alert-info" id="notice"><%= notice %></div><% end %>
 <% if alert %><div class="alert alert-warning" id="alert"><%= alert %></div><% end %>
 
-<h1>Your Cart</h1>
+<h1>Shopping Cart</h1>
 
 <%= javascript_include_tag "cart", "data-turbolinks-track" => true %>
 
@@ -29,10 +29,9 @@
     <br>
   <% end %>
   
-
   <% if false %>
     <div class="address" id="address_div">
-      <h4>Shipping Address</h4>
+      <h4>Delivery Address</h4>
       <% if !@addresses.empty? %>
         <% @addresses.each do |address| %>
           <div>
@@ -43,7 +42,7 @@
         <% end %>
       <% end %>
       <% if @addresses.empty? %>
-          <div>Please add a delivery address and proceed</div>
+          <div>Please add an address for delivery for placing the order</div>
       <% end %>
     </div>
   <% end %>
@@ -52,8 +51,8 @@
   <% ids = item_ids.join(',') %>
   <%= hidden_field_tag "requestparam"%>
   <div class='cart_total_price'>
-    <h4 id="totalCost"><b>Total Cost: $<%= @totalcost%></b></h4>
-      <%= button_to "Place Order", { action: "placeorder" }, id: "place_order",
+    <h4 id="totalCost"><b>Subtotal: $<%= @totalcost%></b></h4>
+      <%= button_to "Proceed to checkout", { action: "placeorder" }, id: "place_order",
             class: "btn btn-dark cart_order_button", :disabled => @carts.empty?,
                 :onclick => "placeOrder('"+ids+"')"%>
   </div>

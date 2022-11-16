@@ -3,13 +3,13 @@
 <% if notice %><div class="alert alert-info" id="notice"><%= notice %></div><% end %>
 <% if alert %><div class="alert alert-warning" id="alert"><%= alert %></div><% end %>
 
-<h1>Item Info</h1>
+<h1>Item Details</h1>
 <div class="jumbotron">
     <p><b>Name: </b><%= @item.name %></p>
     <p><b>Price: $</b><%= @item.price %></p>
     <p><b>Description: </b><%= @item.description %></p>
         <p><span class="glyphicon glyphicon-star"></span><%= @overall_rating %>/5</p>
-        <h1>Buyer Ratings</h1>
+        <h2>Buyer Ratings</h2>
         <% @ratings.each do |rating| %>
             <% rating.stars.times do %>
                 <span class="glyphicon glyphicon-star"></span>
