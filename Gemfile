@@ -27,6 +27,9 @@ gem 'devise', '~> 4.8'
 gem 'turbolinks'
 gem 'jquery-rails'
 
+gem 'bootstrap-will_paginate', '~> 1.0'
+gem 'will_paginate', '~> 3.3', '>= 3.3.1'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
