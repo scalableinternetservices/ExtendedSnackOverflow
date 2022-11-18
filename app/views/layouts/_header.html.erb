@@ -16,11 +16,11 @@
 				<% end %>
 			</li>
 			<li><%= link_to "Profile", "/profile/buyer" %></li>
-			<li><%= button_to "Sign Out", destroy_buyer_session_path, method: :delete, data: { turbo: false } %></li>
+			<li><%= button_to "Sign Out", destroy_buyer_session_path, method: :delete, data: { turbo: false }, class: "btn btn-dark vertical-center" %></li>
 		<% elsif seller_signed_in? %>
 			<li><%= link_to "Add New Item", "/items/new" %></li>
 			<li><%= link_to "Profile", "/profile/seller" %></li>
-			<li><%= button_to "Sign Out", destroy_seller_session_path, method: :delete, data: { turbo: false } %></li>
+			<li><%= button_to "Sign Out", destroy_seller_session_path, method: :delete, data: { turbo: false }, class: "btn btn-dark vertical-center" %></li>
 		<% else %>
 			<li><%= link_to "Buyer Sign In", new_buyer_session_path %></li>
 			<li><%= link_to "Buyer Sign Up", new_buyer_registration_path %></li>
