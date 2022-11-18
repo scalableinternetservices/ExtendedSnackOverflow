@@ -14,23 +14,24 @@
       </ul>
     </div>
   <% end %>
+  <% cache(cache_key_for_new_item) do %>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name, :maximum => 100 %>
+    </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, :maximum => 100 %>
-  </div>
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_field :description, :maximum => 250 %>
+    </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, :maximum => 250 %>
-  </div>
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.number_field :price %>
+    </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Register Product" %>
-  </div>
+    <div class="actions">
+      <%= form.submit "Register Product" %>
+    </div>
+  <% end %>
 <% end %>
