@@ -21,7 +21,7 @@
 				<% if logged %>
 					<%= button_to "Add to Cart", "/cart/#{item.id}", class: 'btn btn-warning' %>
 				<% else %>
-					<%= button_to "Sign in to add to Cart", "/", class: 'btn btn-danger disabled' %>
+					<%= button_to "Sign in to add to Cart", new_buyer_session_path, class: 'btn btn-danger' %>
 				<% end %>
 			</div>
 			<hr>
